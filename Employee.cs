@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,11 +12,12 @@ namespace EmployeeApp.NetProperties
         private string empName;
         private int empId;
         private float currPay;
+        private string empSSN;
         // New field and property : Properties (as opposed to accessor and mutator methods) also make your types easier to
         // manipulate, in that properties are able to respond to the intrinsic operators of C#.
         private int empAge;
-        
-        //Properties!
+   
+        //Properties
 
         public int Age
         {
@@ -35,19 +36,42 @@ namespace EmployeeApp.NetProperties
             }
         }
 
+        // The ’int’ represents the type of data this property
+        // encapsulates.
+
+        public int ID // Note lack of parentheses.
+
+        {
+            get { return empId; }
+            set { empId = value; }
+        }
+
+        public float Pay
+        {
+            get { return currPay; }
+            set { currPay = value; }
+        }
+
+
+        public string SocialSecurityNumber
+        {
+            get { return empSSN; }
+        }
+
         // Updated constructors
 
         public Employee(){}
 
         public Employee( string name, int id, float pay)
-        :this (name, id, pay, 0) { } // Constructor chaining removes this duplication. Provides Default Values. The constructor that doesn't receive age automatically sets age to 0.
+        :this (name, id, pay, 0, "") { } // Constructor chaining removes this duplication. Provides Default Values. The constructor that doesn't receive age automatically sets age to 0.
 
-        public Employee(string name, int id, float pay, int age)
+        public Employee(string name, int id, float pay, int age, string ssn)
         {
-            empName = name;
-            empId = id;
-            currPay = pay;
-            empAge = age;
+            Name = name;
+            ID = id;
+            Pay = pay;
+            Age = age;
+            empSSN = ssn;
         }
 
 
@@ -65,20 +89,6 @@ namespace EmployeeApp.NetProperties
             Console.WriteLine("Pay: {0}", currPay);
             Console.WriteLine("Age: {0}", empAge);
         }
-        // The ’int’ represents the type of data this property
-        // encapsulates.
-
-        public int ID // Note lack of parentheses.
-
-        {
-            get { return empId;}
-            set { empId = value; }
-        }
-
-        public float Pay
-        {
-            get { return currPay; }
-            set {  currPay = value; }
-        }
+        
     }
 }
